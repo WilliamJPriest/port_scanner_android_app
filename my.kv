@@ -1,0 +1,20 @@
+<get_ip>:
+
+    ip: ip
+
+    GridLayout:
+
+        cols : 1
+        size: root.width -200, root.height -200
+        pos: 100, 100
+
+        Label:
+        TextInput:
+            id: ip
+            multiline:False
+
+        Button:
+            text: "scan"
+            on_press: root.btn()
+
+    
