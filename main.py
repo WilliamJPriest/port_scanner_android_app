@@ -24,7 +24,6 @@ def port_scanner(ip, **kwargs):
                     s.settimeout(0.5)
                     s.connect((ip, port))
                     open_ports.append(port)
-                    
             except:
                 pass
 
