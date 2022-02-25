@@ -13,7 +13,7 @@ import socket
 import ipaddress
 
 
-ports = [443,80, 8080, 8000, 3000, 445, 9050, 123, 21, 19, 23]
+ports = [443,80, 8080, 8000, 3000, 445, 9050, 21, 19, 23]
 open_ports = []
 
 def port_scanner(ip, **kwargs):
