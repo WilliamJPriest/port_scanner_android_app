@@ -10,22 +10,7 @@ from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 import socket
-import ipaddress
-
-
-ports = [443,80, 8080, 8000, 3000, 445, 9050, 21, 19, 23]
-open_ports = []
-
-def port_scanner(ip, **kwargs):
-        open_ports.clear()
-        for port in ports:
-            try:
-                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                    s.settimeout(0.5)
-                    s.connect((ip, port))
-                    open_ports.append(port)
-            except:
-                pass
+import core
 
 
 class get_ip(Widget):
@@ -33,21 +18,13 @@ class get_ip(Widget):
 
     def btn(self):
         ip = self.ip.text
-        try:
-            ip_address_obj = ipaddress.ip_address(ip)
-        except:
-            popup = Popup(title='Error', content=Label(text='You entered an invalid ip address'), auto_dismiss=False)
-            popup.open()
-            
-        scan = port_scanner(ip=ip)
-        if len(open_ports) == 0:
-            popup = Popup(title='Error', content=Label(text='did not detect any open ports :('), auto_dismiss=False)
-            popup.open()
-
+        if len(ip) == 0:
+            scan = core.Scan()
         else:
-            popup = Popup(title='', content=Label(text=str(open_ports)), auto_dismiss=False)
-            popup.open()    
-        
+            scan = core.Scan(ip=ip)
+        run = scan.run()
+        popup = Popup(title='', content=Label(text=str(run)), auto_dismiss=False)
+        popup.open()
 
 
 class MyApp(App):
