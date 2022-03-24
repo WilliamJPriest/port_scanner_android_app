@@ -15,10 +15,7 @@ class Scan:
             return False
 
     def is_empty(self):
-        if len(self.open_ports) == 0:
-            return False
-        else:
-            return True
+        return len(self.open_ports) == 0:
         
     def scan(self):
         for port in self.ports:
