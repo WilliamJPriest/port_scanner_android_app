@@ -2,4 +2,4 @@
 Android app allows you to find all network entry points available on a system
 
 
-Webapp: http://portscannerr.herokuapp.com/
+Web app: http://portscannerr.herokuapp.com/
